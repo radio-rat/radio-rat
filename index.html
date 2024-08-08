@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Hours</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #1a1a1a, #333, #1a1a1a, #333);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        h1, p, .discord, .current-time {
+            color: #ffeb3b;
+        }
+        .discord a {
+            text-decoration: none;
+            color: #ffeb3b;
+        }
+        .discord a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function updateTime() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const timeString = `Current Time: ${hours}:${minutes} CST`;
+                document.getElementById("current-time").textContent = timeString;
+            }
+            setInterval(updateTime, 1000);
+            updateTime();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Hours (CST)</h1>
+        <p>Mon-Thurs: 8:00 pm - 10:00 pm</p>
+        <p>Fri: 8:00 pm - Any</p>
+        <p>Sat: Any - Any</p>
+        <div class="discord">Contact me on Discord: <a href="https://discordapp.com/users/brkn_radio" target="_blank">brkn_radio</a></div>
+        <div id="current-time" class="current-time"></div>
+    </div>
+</body>
+</html>
